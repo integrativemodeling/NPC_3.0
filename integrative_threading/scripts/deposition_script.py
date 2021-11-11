@@ -22,6 +22,7 @@ import Bio.SeqIO
 from Bio.SeqIO.FastaIO import SimpleFastaParser
 import glob
 import os
+import itertools
 from DisorderedCrossLink import *
 
 sys.path.append('../../utils/')
@@ -134,8 +135,7 @@ def add_model_cross_links(m, xlrs):
                 xl.pseudo2 = []
             xl.pseudo1.append(ps1)
             xl.pseudo2.append(ps2)
-
-
+            
 ######################
 # MAIN
 ######################
@@ -248,7 +248,6 @@ for prot, (entry, sd, limits) in Uniprot.items():
     chains = chain_mapping[prot]
     asym_indexes = [asym_mapping[c] for c in chains]
     ref = ihm.reference.UniProtSequence.from_accession(entry)
-    print('-----',limits)
     for seg in limits:
         ref.alignments.append(ihm.reference.Alignment(
             db_begin=seg[0], db_end=seg[1], entity_begin=seg[2], entity_end=seg[3], seq_dif=sd))
@@ -271,6 +270,7 @@ XLs_dataset = ihm.dataset.CXMSDataset(l_XLs)
 XLs_restraint = ihm.restraint.CrossLinkRestraint(XLs_dataset, ihm.cross_linkers.dss)
 xlr_dist = 32
 
+all_prots = {e.description:e for e in system.entities}
 # Add all experimentally-determined cross-links
 with open(XLs_restraint.dataset.location.path) as fh:
     distance = ihm.restraint.UpperBoundDistanceRestraint(xlr_dist)
@@ -280,25 +280,36 @@ with open(XLs_restraint.dataset.location.path) as fh:
         else:
             vals=line.split(',')
             prot1=vals[0]
-            resi1=vals[1]
+            resi1=int(vals[1])
             prot2=vals[2]
-            resi2=vals[3]
+            resi2=int(vals[3])
+            
             if prot1 in all_prots.keys() and prot2 in all_prots.keys():
                 ex_xl = ihm.restraint.ExperimentalCrossLink(
-                    entity.residue(resi1), entity.residue(resi2))
+                    all_prots[prot1].residue(resi1),all_prots[prot2].residue(resi2))
                 XLs_restraint.experimental_cross_links.append([ex_xl])
-                #rcl = ihm.restraint.ResidueCrossLink(
-                #    ex_xl, asym1=all_prots[prot1], asym2=all_prots[prot2], distance=distance)
-                #XLs_restraint.cross_links.append(rcl)
-                    
+                chains1 = chain_mapping[prot1]
+                chains2 = chain_mapping[prot2]
+                for ch1, ch2 in itertools.product(chains1, chains2):
+                    rcl = ihm.restraint.ResidueCrossLink(
+                        ex_xl, asym1=system.asym_units[asym_mapping[ch1]],
+                        asym2=system.asym_units[asym_mapping[ch2]], distance=distance)
+                    XLs_restraint.cross_links.append(rcl)
+
+
 # EM dataset
 l_EM = ihm.location.EMDBLocation('EMDB-24232')
 EM_dataset = ihm.dataset.EMDensityDataset(l_EM)
 EM_restraint = ihm.restraint.EM3DRestraint(EM_dataset, modeled_assembly)
 
+# PDB data
+l_PDB = ihm.location.PDBLocation('7N85')
+PDB_dataset = ihm.dataset.PDBDataset(l_PDB)
+
 # Group all together
 all_datasets = ihm.dataset.DatasetGroup((XLs_dataset,
-                                         EM_dataset))
+                                         EM_dataset,
+                                         PDB_dataset))
 
 system.restraints.extend((XLs_restraint,EM_restraint))
 
@@ -329,21 +340,6 @@ analysis.steps.append(ihm.analysis.FilterStep(
 # Add coordinates
 ####################
 
-pdb_l = ihm.location.PDBLocation("5LUQ", version="1.1")
-pdb_dataset = ihm.dataset.PDBDataset(pdb_l)
-
-
-'''
-rr = []
-for k,chains in chain_mapping.items():
-    for ch in chains:
-        nasym = asym_mapping[ch]
-        asym = system.asym_units[nasym]
-        start_model = StartingModel(asym_unit=asym, asym_id=ch, dataset=pdb_dataset, 
-                                    pdb_file="../results/yeast-spoke-thread2-mdff-step13_representative.pdb")
-        rr.append(ihm.representation.ResidueSegment(asym, rigid=True, primitive="sphere", starting_model=start_model))
-'''
-
 rr = [ihm.representation.ResidueSegment(a, rigid=True, primitive="sphere") for a in system.asym_units]
 rep = ihm.representation.Representation(rr)
 
@@ -351,7 +347,7 @@ rep = ihm.representation.Representation(rr)
 models = []
 mgs = []
 pdbs = glob.glob('../results/yeast-spoke-thread2-mdff-step13_ensemble_*.pdb')
-for n, pdb_file in enumerate(pdbs[0:2]):
+for n, pdb_file in enumerate(pdbs):
     print('pdb_file',pdb_file)
     m = Model(assembly = modeled_assembly, protocol=protocol, representation=rep,
               file_name=pdb_file, asym_units=[asym],
