@@ -74,17 +74,6 @@ class SSEThread(IMP.ModelObject):
             # Fix this
             self.sequence_hierarchy.append(seq_chain)
                     
-        #for mol in mols:
-        #    prot = mol.get_name()
-        #    # Check of coordinates for protein to be threaded are already present
-        #    if prot in self.sequences.keys():
-        #        seq_chain = self.build_sequence_chains(seq = self.sequences[prot], prot = prot)
-        #        #seq_chain = IMP.atom.Chain.setup_particle(IMP.Particle(self.model, "seq_chain_"+mol.get_name()), "S"+mol.get_name())
-        #        mol.get_parent().add_child(seq_chain)
-        #    else:
-                
-        
-        #print(IMP.atom.show_with_representations(self.root_hier))
         mols = IMP.atom.get_by_type(self.root_hier, IMP.atom.MOLECULE_TYPE)
         
         
@@ -234,19 +223,15 @@ class SSEThread(IMP.ModelObject):
                 n4 = int(fname.split("_")[5])+1
                 stride0 = [stride[r] for r in range(n1, n2)]
                 stride1 = [stride[r] for r in range(n3, n4)]
-                #print(stride0, stride1)
                 self.structure_elements[se_ix] = self.setup_structure_element(coords0, "H", 0, 1, 0, stride0)
                 self.structure_elements[se_ix+1] = self.setup_structure_element(coords1, "H", 0, 1, 0, stride1)
             else:
                 self.structure_elements[se_ix] = self.setup_structure_element(coords0, "H", 0, 1, 0)
                 self.structure_elements[se_ix+1] = self.setup_structure_element(coords1, "H", 0, 1, 0)
 
-            #print(p)
-            #print("   ", structure_elements[se_ix].get_coordinates()[0:3])
-            #print("   ", structure_elements[se_ix+1].get_coordinates()[0:3])
+            
             se_ix+=2
 
-        #print("Keys", self.structure_elements.keys())
         return self.structure_elements
 
     def setup_structure_element(self, coordinates, sec_struct, start_residue=0, polarity=1, offset=0, chain='0', stride=None):
@@ -583,10 +568,9 @@ class SSEThread(IMP.ModelObject):
 
         this_loop = None
         # Find the loop containing new_sr
-        #print("--LOOPS--")
+       
         for lk in self.loops.keys():
-            #print(" ",lk, new_sr, "|",self.loops[lk].start,self.loops[lk].length,"|", len(self.loops[lk].get_loop_residues()), self.loops[lk].is_res_in_loop(new_sr))
-            #print(" ",new_sr, self.loops[lk].start, self.loops[lk].get_loop_residues()[-1], self.loops[lk].is_res_in_loop(new_sr))
+           
             if self.loops[lk].is_res_in_loop(new_sr):
                 this_loop = self.loops[lk]
                 break
@@ -642,11 +626,10 @@ class SSEThread(IMP.ModelObject):
             mode = 2
         if mode == 2:
             snd_loop = self.loops[list(self.loops.keys())[-2]]
-            #print("-22- New Loops", new_loop.start, new_loop.length, "|", snd_loop.start, snd_loop.length, "|", new_sr, self.structure_elements[seid].get_length())
         
         else:
             i=0
-            #print("---- New Loop", new_loop.start, new_loop.length, "|", new_sr, self.structure_elements[seid].get_length())
+            
         del self.loops[lk]
 
 
@@ -843,8 +826,7 @@ class SSEAdditionMover(IMP.threading.SSEThreadMover):
         if seid is None:
             rand_srs = list(self.structure_elements.keys())
             random.shuffle(rand_srs)
-
-        #print(rand_srs)
+            
             for seid in rand_srs:
                 se = self.structure_elements[seid]
                 sr = se.get_start_res()
@@ -1087,10 +1069,8 @@ class SEMover(IMP.threading.StructureElementMover):
             return IMP.core.MonteCarloMoverResult([se.get_particle_index()], 0.0)
         new_start_res = random.choice(start_res)
         se.set_start_res_key(new_start_res)
-        #print(self.system.get_built_residues())
         if new_start_res != 0:
             self.transform_coordinates()
-        #print(self.system.get_built_residues())
         self.system.start_res_list[self.seid]=new_start_res
 
         # Modify the loops table for the system
@@ -1213,11 +1193,7 @@ class SecondaryStructureRestraint(IMP.pmi.restraints.RestraintBase):
         # Get SE particle indexes
         se_part_indexes = [s.get_particle_index() for s in structural_elements.values()]
 
-        # Check number of particles
-        #if len(ss_probs) != len(ps):
-        #    raise Exception("SS file does not have same # of residues as protein")
-
-
+    
         # Setup restraint
         chains = IMP.atom.get_by_type(hierarchy, IMP.atom.CHAIN_TYPE)
         seq_chain = [ch for ch in chains if 'seq_chain_'+prot in ch.get_name()][0]
@@ -1491,7 +1467,6 @@ class ChainConnectivityRestraint(IMP.pmi.restraints.RestraintBase):
     def get_max_distance(self, nres):
         meandist = self.get_mean_distance(nres)
         sddist = self.get_sd_distance_per_residue(nres)
-        #print('nres', nres, 'meandist', meandist, sddist, self.n_sds, meandist + sddist * self.n_sds)
         return  meandist + sddist * self.n_sds
 
     def get_distance_fixed_end(self, chain_coords_sorted, chain_end_tag):
@@ -1515,7 +1490,6 @@ class ChainConnectivityRestraint(IMP.pmi.restraints.RestraintBase):
                 d_max_t = self.get_max_distance(n_res_dif)
                 d_max = self.lmax_flory(n_res_dif)
                 d = d_mod - d_max
-                #print('--------', d_mod, d_max, d) 
                 DD.append(d)
         
         return DD
@@ -1586,17 +1560,13 @@ class ChainConnectivityRestraint(IMP.pmi.restraints.RestraintBase):
                     max_distances.append(self.lmax_flory(n))
                 
             max_distances_old = [self.get_max_distance(n) for n in res_dif]
-            #print('distances SE', sel_chain, model_distances, max_distances, res_dif)
-            #print(max_distances_old)
+            
             
             for d_mod, d_max, dd in zip(model_distances,max_distances, res_dif):
                 d = d_mod-d_max
-                #print('model distance', d_mod, 'd_max', d_max, 'dd', dd)
                 if d>0 and dd>0:
                     score += self.r.evaluate(d)
-                    #print(self.r.evaluate(d))
                 elif dd< 0:
-                    #print('here!', 1000)
                     score += 10000
         return score
         
@@ -1639,7 +1609,6 @@ class StructuralElementConnectivityRestraint(IMP.pmi.restraints.RestraintBase):
                                                                     dpr,
                                                                     "")
 
-            #print(r.get_number_of_residues(), r.get_max_distance(), r.get_model_distance())
             
             self.rs.add_restraint(r)
 
@@ -1718,26 +1687,22 @@ class StructuralElementCrossLinksRestraint(IMP.pmi.restraints.RestraintBase):
                 sp2 = IMP.atom.Selection(root_hier, chain_id='S'+prot2, residue_index = int(r2)).get_selected_particles()
                 
                 if len(p1)>0 and len(p2)>0:
-                    #print(prot1, prot2, r1, r2, p1, p2, sp1, sp2)
                     r = IMP.threading.LoopPairDistanceRestraint(model, IMP.core.HarmonicUpperBound(length, xl_slope), 
                                                                 p1, p2, xl_constant, length)
-                    #self.rs.add_restraint(r)
-                    #nn += 1
+                    self.rs.add_restraint(r)
+                    nn += 1
                 elif len(sp1)>0 and len(p2)>0:
                     nn += 1
-                    #print(prot1, prot2, r1, r2, p1, p2, sp1, sp2)
                     r = IMP.threading.LoopPairDistanceRestraint(model, IMP.core.HarmonicUpperBound(length, xl_slope), 
                                                sp1, p2, xl_constant, length)
                     self.rs.add_restraint(r)
                 elif len(p1)>0 and len(sp2)>0:
                     nn += 1
-                    #print(prot1, prot2, r1, r2, p1, p2, sp1, sp2)
                     r = IMP.threading.LoopPairDistanceRestraint(model, IMP.core.HarmonicUpperBound(length, xl_slope), 
                                                p1, sp2, xl_constant, length)
                     self.rs.add_restraint(r)
                 elif len(sp1)>0 and len(sp2)>0:
                     nn += 1
-                    #print(prot1, prot2, r1, r2, p1, p2, sp1, sp2)
                     r = IMP.threading.LoopPairDistanceRestraint(model, IMP.core.HarmonicUpperBound(length, xl_slope), 
                                                sp1, sp2, xl_constant, length)
                     self.rs.add_restraint(r)
@@ -1756,8 +1721,6 @@ class SEDistanceRestraint(IMP.Restraint):
                  func,
                  p1,p2,
                  name=None, weight=1.):
-        
-        #self.model = model
 
         self.p1 = p1
         self.p2 = p2

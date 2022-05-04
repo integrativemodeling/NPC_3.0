@@ -1,0 +1,4 @@
+The sampling precision is defined as the largest allowed RMSD between the cluster centroid and a  pom152 model within any cluster in the finest clustering for which each sample contributes models proportionally to its size (considering both significance and magnitude of the difference) and for which a sufficient proportion of all models occur in sufficiently large clusters. The sampling precision for our  pom152  modeling is 24.659  A.
+Sampling precision, P-value, Cramer's V and percentage of clustered models below:
+24.659	1.000	0.000	99.590
+

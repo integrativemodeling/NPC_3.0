@@ -1,0 +1,8 @@
+title: Comprehensive structure and functional adaptations of the yeast nuclear pore complex
+tags: [chemical crosslinks, PMI, cryo-EM]
+prereqs: [python/numpy, python/pandas, python/matplotlib]
+accessions: [PDBDEV_00000097]
+pmid: 34982960
+test:
+    runtime: 128h
+    build: release

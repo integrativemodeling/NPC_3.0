@@ -78,7 +78,6 @@ def eval_thread(SEs_ordered, SEMs_ordered, start_residues):
         l = se_sel.get_length()
         se_sel.set_start_res_key(start_residues[k])
         se_sel.set_length_key(int(l))
-        #se_sel.set_chain_key(chain_id[prots[k]])
         se_mover_sel.transform_coordinates()
 
     cr_eval = cr.evaluate()
@@ -93,18 +92,12 @@ def eval_threading_one(SEM, SEs_ordered,start_res):
     for st in start_res:
         for k, se_sel in enumerate(SEs_ordered):
             se_mover_sel = SEM[k]
-            #se_mover_sel.zero_coordinates()
-            #l = se_sel.get_length()
-            #se_sel.set_start_res_key(start_residues[k])
-            #se_sel.set_length_key(int(l))
-            #se_mover_sel.transform_coordinates()
         cre = 0
         cre = cr.evaluate()
         if cre > 5000.0:
             continue
         else:
             sc = list(st) + [cre] + [0]*3
-            #sc = start_res + [cre] + [r.evaluate() for r in other_restraints]
             scores.append(sc)
             
     return scores
@@ -181,7 +174,6 @@ def eval_threading(Tup, SE_ordered, start_residues, file_out):
     zero_coordinates_SEM(SE_movers[('seq_chain_Nic96',0)]['main'])  
   
     #all_polarities = list(itertools.product([-1, 1],repeat=len(SE_ordered)))
-    #all_polarities =  list(set([p for p in all_polarities if (p[0]==1 and p[1]==1 and p[2]==1 and p[3]==-1 and p[4]==-1 and p[5]==1 and p[6]==1)]))
     all_polarities = [[1,1,1,1,1,1,1]]
     print('polarities',all_polarities, len(all_polarities), len(SE_ordered))
    
@@ -232,7 +224,6 @@ def write_scores_wcopies(assign, perm, scores, file_out):
     assign_prot = (a[0] for a in assign)
     assign_copy = [a[1] for a in assign]
     p_prot = np.array(list(assign_prot) * len(scores)).reshape(-1, len(assign))
-    #p_copy = np.array(list(assign_copy) * len(scores)).reshape(-1, len(assign))
     p_perm = np.array(list(perm) * len(scores)).reshape(-1, len(perm))
     scores_concat = np.hstack((p_prot, p_perm, scores))
     np.savetxt(file_out, scores_concat, fmt='%s')
@@ -419,9 +410,7 @@ sel_assign[tuple(all_options[opt][0])] = perms_key
 # Now all products
 for assign, perms in sel_assign.items():
     print('assign', assign)
-    print('---')
     print(len(list(itertools.product(*perms.values()))),list(itertools.product(*perms.values())))
-    print('---')
 
 print(sel_assign[tuple(all_options[opt][0])].keys())
 
@@ -483,10 +472,6 @@ cr = ChainConnectivityRestraint(root_hier,
 cr.add_to_model()
 restraints.append(cr)
 
-def run_cr():
-    return cr.evaluate()
-print('--------')
-print('Connectivity score:', cr.evaluate())
 
 ############################
 # Cross-linking restraint
@@ -501,8 +486,7 @@ xl.add_to_model()
 restraints.append(xl)
 xl_score = xl.evaluate()
 print('xl score', xl.evaluate())
-def run_xl():
-    return xl.evaluate()
+
 
 ###############################
 # Setup SS restraint
@@ -531,7 +515,6 @@ t_xl = timeit.timeit(run_xl,number=1)
 t_Nic96 = timeit.timeit(run_ppr_Nic96,number=1)
 
 print('cr, xl, Nip96',t_cr,t_xl,t_Nic96)
-#print('scores', cr.evaluate(), xl.evaluate(),ppr_Nic96.evaluate())
 
 ###########################
 # For testing
@@ -555,7 +538,6 @@ print(IMP.atom.show_with_representations(root_hier))
 
 
 print(xl.evaluate())
-#out_perm.close()
 print(all_options[opt], opt, np.array(scores_all))
 zero_coordinates_SEM(SE_movers[('seq_chain_Nic96',0)]['main'])
 ###########################
@@ -563,8 +545,6 @@ zero_coordinates_SEM(SE_movers[('seq_chain_Nic96',0)]['main'])
 ############################
 RS = get_restraint_set(mdl)
 sf = IMP.core.RestraintsScoringFunction(RS)
-#print('Total score: ', sf.evaluate(False))
-
 
 ############################
 # All possible protein
@@ -589,8 +569,6 @@ for assign, perms in sel_assign.items():
       D[a]+=1
     zero_coordinates_SEM(SE_movers[('seq_chain_Nic96',0)]['main'])
     n_models_it = 0
-    print('assign', assign)
-    print('---')
     print(len(list(itertools.product(*perms.values()))))
     for ii, iters in enumerate(itertools.product(*perms.values())):
       if ii == sel_2:
@@ -605,8 +583,6 @@ for assign, perms in sel_assign.items():
         print('lenghts', lengths_new)
         elements_new = [elements_single[i] for i in permutation]
         limits_new = get_limits(elements_new, first_residue, last_residue)
-        print(limits_new)
-        # 6.0 29.0 44.0 68.0 85.0 100.0 126.0
         limits_new[0][0]=10
         limits_new[0][1]=20
         limits_new[1][0]=29

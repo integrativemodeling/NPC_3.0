@@ -30,16 +30,19 @@ import make_archive
 
 # The system was represented as a bead model with one residue per bead
 class StartingModel(ihm.startmodel.StartingModel):
-    def __init__(self, pdb_file,  **kwargs):
+    def __init__(self, pdb_file, **kwargs):
         super(StartingModel, self).__init__(**kwargs)
+
         self.pdb_file = pdb_file
+        self.asym_unit = kwargs['asym_unit']
+        
 
     def get_atoms(self):
         p = Bio.PDB.PDBParser()
         s = p.get_structure('rep', self.pdb_file)
         for model in s:
             for chain in model.get_chains():
-                if chain.get_id() in asym_mapping.keys():
+                if chain.get_id()== self.asym_unit.id:
                     print('****', chain.get_id())
                     nasym = asym_mapping[str(chain.get_id())]
                     asym = system.asym_units[nasym]
@@ -159,14 +162,21 @@ chain_mapping = {'Nic96':['Q','R','S','T'],
 
 data_dir='../../data/'
 
-title = ("Integrative threading of yeast NPC sequence based on data from "
-  "cryo-EM and chemical cross-linking")
+title = ("Comprehensive structure and functional adaptations of the yeast nuclear pore complex.")
 system = ihm.System(title=title)
-system.asym_units = []
-print(system.asym_units)
 
+system.citations.append(ihm.Citation(
+          pmid='34982960', title=title,
+          journal="Cell", volume=185, page_range=(361-378),
+          year=2022,
+          authors=['Akey CW', 'Singh D', 'Ouch C', 'Echeverria I',
+                   'Nudelman I', 'Varberg JM', 'Yu Z', 'Fang F',
+                   'Shi Y', 'Wang J', 'Salzberg D', 'Song K', 'Xu C',
+                   'Gumbart JC', 'Suslov S', 'Unruh J', 'Jaspersen SL',
+                   'Chait BT', 'Sali A', 'Fernandez-Martinez J',
+                   'Ludtke SJ', 'Villa E', 'Rout MP'],
+          doi='10.1016/j.cell.2021.12.015'))
 
-#system.citations.append(ihm.Citation.from_pubmed_id(31570166))
 
 ####################
 # SOFTWARE
@@ -226,7 +236,8 @@ asym_mapping = {}
 k = 0
 all_prots = {}
 assemblies = []
-for prot, key in Uniprot.items():
+
+for prot, (entry, sd, limits) in Uniprot.items():
     for record in Bio.SeqIO.parse(f"{data_dir}/{prot}.fasta", "fasta"):
         if record.name == prot:
             sequence = record.seq
@@ -240,6 +251,12 @@ for prot, key in Uniprot.items():
         k += 1
         assembly = ihm.Assembly((asym,), name= f'{prot}.{i}')
         assemblies.append(assembly)
+    ref = ihm.reference.UniProtSequence.from_accession(entry)
+    for seg in limits:
+        ref.alignments.append(ihm.reference.Alignment(
+            db_begin=seg[0], db_end=seg[1], entity_begin=seg[2], entity_end=seg[3], seq_dif=sd))
+    
+    asym.entity.references.append(ref)
         
 modeled_assembly = ihm.Assembly(tuple(system.asym_units), name='Modeled assembly')
 
@@ -251,7 +268,7 @@ for prot, (entry, sd, limits) in Uniprot.items():
     for seg in limits:
         ref.alignments.append(ihm.reference.Alignment(
             db_begin=seg[0], db_end=seg[1], entity_begin=seg[2], entity_end=seg[3], seq_dif=sd))
-    for id in asym_indexes:
+    for id in asym_indexes[0:1]:
         system.asym_units[id].entity.references.append(ref)
         
 
@@ -306,6 +323,10 @@ EM_restraint = ihm.restraint.EM3DRestraint(EM_dataset, modeled_assembly)
 l_PDB = ihm.location.PDBLocation('7N85')
 PDB_dataset = ihm.dataset.PDBDataset(l_PDB)
 
+print(tuple(system.asym_units))
+
+print(type(system.asym_units), system.asym_units)
+
 # Group all together
 all_datasets = ihm.dataset.DatasetGroup((XLs_dataset,
                                          EM_dataset,
@@ -337,17 +358,28 @@ analysis.steps.append(ihm.analysis.FilterStep(
     details="Filtering by connectivy satisfaction"))
 
 ####################
+# Starting model
+####################
+
+ST = {}
+pdb_ini = '../results/yeast-spoke-thread2-mdff-step13_initial.pdb'
+for k,v in asym_mapping.items():
+    ST[v]=StartingModel(pdb_ini, asym_unit=system.asym_units[v],dataset=PDB_dataset, asym_id=k)
+    ST[v].get_atoms()
+    
+
+####################
 # Add coordinates
 ####################
 
-rr = [ihm.representation.ResidueSegment(a, rigid=True, primitive="sphere") for a in system.asym_units]
+rr = [ihm.representation.ResidueSegment(a, rigid=True, primitive="sphere",starting_model=ST[i]) for i,a in enumerate(system.asym_units)]
 rep = ihm.representation.Representation(rr)
 
 # Add ensemble members
 models = []
 mgs = []
 pdbs = glob.glob('../results/yeast-spoke-thread2-mdff-step13_ensemble_*.pdb')
-for n, pdb_file in enumerate(pdbs):
+for n, pdb_file in enumerate(pdbs[0:10]):
     print('pdb_file',pdb_file)
     m = Model(assembly = modeled_assembly, protocol=protocol, representation=rep,
               file_name=pdb_file, asym_units=[asym],

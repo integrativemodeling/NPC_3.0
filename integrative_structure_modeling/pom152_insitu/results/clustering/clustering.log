@@ -1,0 +1,525 @@
+
+* FILE: 
+  Records:           1
+  Out of range:      0
+  Invalid:           0
+  Column headers:    0
+  Blank:             0
+  Data Blocks:       1
+
+* COLUMN: 
+  Mean:               0.0000
+  Std Dev:            0.0000
+  Sample StdDev:   undefined
+  Skewness:        undefined
+  Kurtosis:        undefined
+  Avg Dev:            0.0000
+  Sum:                0.0000
+  Sum Sq.:            0.0000
+
+  Mean Err.:          0.0000
+  Std Dev Err.:       0.0000
+  Skewness Err.:      2.4495
+  Kurtosis Err.:      4.8990
+
+  Minimum:            0.0000 [0]
+  Maximum:            0.0000 [0]
+  Quartile:           0.0000 
+  Median:             0.0000 
+  Quartile:           0.0000 
+
+
+* FILE: 
+  Records:           1
+  Out of range:      0
+  Invalid:           0
+  Column headers:    0
+  Blank:             0
+  Data Blocks:       1
+
+* COLUMN: 
+  Mean:            1872.0000
+  Std Dev:            0.0000
+  Sample StdDev:   undefined
+  Skewness:        undefined
+  Kurtosis:        undefined
+  Avg Dev:            0.0000
+  Sum:             1872.0000
+  Sum Sq.:       3.50438e+06
+
+  Mean Err.:          0.0000
+  Std Dev Err.:       0.0000
+  Skewness Err.:      2.4495
+  Kurtosis Err.:      4.8990
+
+  Minimum:         1872.0000 [0]
+  Maximum:         1872.0000 [0]
+  Quartile:        1872.0000 
+  Median:          1872.0000 
+  Quartile:        1872.0000 
+
+
+* FILE: 
+  Records:           1
+  Out of range:      0
+  Invalid:           0
+  Column headers:    0
+  Blank:             0
+  Data Blocks:       1
+
+* COLUMN: 
+  Mean:            3246.0000
+  Std Dev:            0.0000
+  Sample StdDev:   undefined
+  Skewness:        undefined
+  Kurtosis:        undefined
+  Avg Dev:            0.0000
+  Sum:             3246.0000
+  Sum Sq.:       1.05365e+07
+
+  Mean Err.:          0.0000
+  Std Dev Err.:       0.0000
+  Skewness Err.:      2.4495
+  Kurtosis Err.:      4.8990
+
+  Minimum:         3246.0000 [0]
+  Maximum:         3246.0000 [0]
+  Quartile:        3246.0000 
+  Median:          3246.0000 
+  Quartile:        3246.0000 
+
+
+* FILE: 
+  Records:           1
+  Out of range:      0
+  Invalid:           0
+  Column headers:    0
+  Blank:             1
+  Data Blocks:       1
+
+* COLUMN: 
+  Mean:               1.0000
+  Std Dev:            0.0000
+  Sample StdDev:   undefined
+  Skewness:        undefined
+  Kurtosis:        undefined
+  Avg Dev:            0.0000
+  Sum:                1.0000
+  Sum Sq.:            1.0000
+
+  Mean Err.:          0.0000
+  Std Dev Err.:       0.0000
+  Skewness Err.:      2.4495
+  Kurtosis Err.:      4.8990
+
+  Minimum:            1.0000 [0]
+  Maximum:            1.0000 [0]
+  Quartile:           1.0000 
+  Median:             1.0000 
+  Quartile:           1.0000 
+
+
+* FILE: 
+  Records:           1
+  Out of range:      0
+  Invalid:           0
+  Column headers:    0
+  Blank:             1
+  Data Blocks:       1
+
+* COLUMN: 
+  Mean:               0.0000
+  Std Dev:            0.0000
+  Sample StdDev:   undefined
+  Skewness:        undefined
+  Kurtosis:        undefined
+  Avg Dev:            0.0000
+  Sum:                0.0000
+  Sum Sq.:            0.0000
+
+  Mean Err.:          0.0000
+  Std Dev Err.:       0.0000
+  Skewness Err.:      2.4495
+  Kurtosis Err.:      4.8990
+
+  Minimum:            0.0000 [0]
+  Maximum:            0.0000 [0]
+  Quartile:           0.0000 
+  Median:             0.0000 
+  Quartile:           0.0000 
+
+
+* FILE: 
+  Records:           10
+  Out of range:       0
+  Invalid:            0
+  Column headers:     0
+  Blank:              0
+  Data Blocks:        1
+
+* COLUMN: 
+  Mean:              17.1092
+  Std Dev:            8.6168
+  Sample StdDev:      9.0830
+  Skewness:           0.0000
+  Kurtosis:           1.7758
+  Avg Dev:            7.5000
+  Sum:              171.0920
+  Sum Sq.:         3669.7463
+
+  Mean Err.:          2.7249
+  Std Dev Err.:       1.9268
+  Skewness Err.:      0.7746
+  Kurtosis Err.:      1.5492
+
+  Minimum:            3.6092 [ 0]
+  Maximum:           30.6092 [ 9]
+  Quartile:           9.6092 
+  Median:            17.1092 
+  Quartile:          24.6092 
+
+
+* FILE: 
+  Records:           1
+  Out of range:      0
+  Invalid:           0
+  Column headers:    0
+  Blank:             1
+  Data Blocks:       1
+
+* COLUMN: 
+  Mean:              18.6090
+  Std Dev:            0.0000
+  Sample StdDev:   undefined
+  Skewness:        undefined
+  Kurtosis:        undefined
+  Avg Dev:            0.0000
+  Sum:               18.6090
+  Sum Sq.:          346.2949
+
+  Mean Err.:          0.0000
+  Std Dev Err.:       0.0000
+  Skewness Err.:      2.4495
+  Kurtosis Err.:      4.8990
+
+  Minimum:           18.6090 [0]
+  Maximum:           18.6090 [0]
+  Quartile:          18.6090 
+  Median:            18.6090 
+  Quartile:          18.6090 
+
+
+* FILE: 
+  Records:           100
+  Out of range:        0
+  Invalid:             0
+  Column headers:      0
+  Blank:               0
+  Data Blocks:         1
+
+* COLUMN: 
+  Mean:             466.7828
+  Std Dev:           19.9392
+  Sample StdDev:     20.0397
+  Skewness:           0.0000
+  Kurtosis:           1.7998
+  Avg Dev:           17.2688
+  Sum:            46678.2761
+  Sum Sq.:       2.18284e+07
+
+  Mean Err.:          1.9939
+  Std Dev Err.:       1.4099
+  Skewness Err.:      0.2449
+  Kurtosis Err.:      0.4899
+
+  Minimum:          432.5906 [  0]
+  Maximum:          500.9749 [ 99]
+  Quartile:         449.5140 
+  Median:           466.7828 
+  Quartile:         484.0515 
+
+
+* FILE: 
+  Records:           100
+  Out of range:        0
+  Invalid:             0
+  Column headers:      0
+  Blank:               0
+  Data Blocks:         1
+
+* COLUMN: 
+  Mean:             480.6811
+  Std Dev:           23.9205
+  Sample StdDev:     24.0410
+  Skewness:           0.0000
+  Kurtosis:           1.7998
+  Avg Dev:           20.7168
+  Sum:            48068.1112
+  Sum Sq.:       2.31627e+07
+
+  Mean Err.:          2.3921
+  Std Dev Err.:       1.6914
+  Skewness Err.:      0.2449
+  Kurtosis Err.:      0.4899
+
+  Minimum:          439.6618 [  0]
+  Maximum:          521.7004 [ 99]
+  Quartile:         459.9643 
+  Median:           480.6811 
+  Quartile:         501.3979 
+
+
+* FILE: 
+  Records:           100
+  Out of range:        0
+  Invalid:             0
+  Column headers:      0
+  Blank:               0
+  Data Blocks:         1
+
+* COLUMN: 
+  Mean:              18.7200
+  Std Dev:           15.2834
+  Sample StdDev:     15.3604
+  Skewness:           0.6121
+  Kurtosis:           2.2232
+  Avg Dev:           12.8408
+  Sum:             1872.0000
+  Sum Sq.:        58402.0000
+
+  Mean Err.:          1.5283
+  Std Dev Err.:       1.0807
+  Skewness Err.:      0.2449
+  Kurtosis Err.:      0.4899
+
+  Minimum:            0.0000 [  1]
+  Maximum:           54.0000 [ 29]
+  Quartile:           5.0000 
+  Median:            15.0000 
+  Quartile:          30.0000 
+
+
+* FILE: 
+  Records:           100
+  Out of range:        0
+  Invalid:             0
+  Column headers:      0
+  Blank:               0
+  Data Blocks:         1
+
+* COLUMN: 
+  Mean:              36.4400
+  Std Dev:           25.0073
+  Sample StdDev:     25.1333
+  Skewness:          -0.0933
+  Kurtosis:           1.6163
+  Avg Dev:           22.2872
+  Sum:             3644.0000
+  Sum Sq.:       195324.0000
+
+  Mean Err.:          2.5007
+  Std Dev Err.:       1.7683
+  Skewness Err.:      0.2449
+  Kurtosis Err.:      0.4899
+
+  Minimum:            0.0000 [  1]
+  Maximum:           79.0000 [ 31]
+  Quartile:           8.0000 
+  Median:            41.5000 
+  Quartile:          57.5000 
+
+
+* FILE: 
+  Records:           1
+  Out of range:      0
+  Invalid:           0
+  Column headers:    0
+  Blank:             0
+  Data Blocks:       1
+
+* COLUMN: 
+  Mean:               0.0000
+  Std Dev:            0.0000
+  Sample StdDev:   undefined
+  Skewness:        undefined
+  Kurtosis:        undefined
+  Avg Dev:            0.0000
+  Sum:                0.0000
+  Sum Sq.:            0.0000
+
+  Mean Err.:          0.0000
+  Std Dev Err.:       0.0000
+  Skewness Err.:      2.4495
+  Kurtosis Err.:      4.8990
+
+  Minimum:            0.0000 [0]
+  Maximum:            0.0000 [0]
+  Quartile:           0.0000 
+  Median:             0.0000 
+  Quartile:           0.0000 
+
+
+* FILE: 
+  Records:           1
+  Out of range:      0
+  Invalid:           0
+  Column headers:    0
+  Blank:             0
+  Data Blocks:       1
+
+* COLUMN: 
+  Mean:               0.3393
+  Std Dev:            0.0000
+  Sample StdDev:   undefined
+  Skewness:        undefined
+  Kurtosis:        undefined
+  Avg Dev:            0.0000
+  Sum:                0.3393
+  Sum Sq.:            0.1151
+
+  Mean Err.:          0.0000
+  Std Dev Err.:       0.0000
+  Skewness Err.:      2.4495
+  Kurtosis Err.:      4.8990
+
+  Minimum:            0.3393 [0]
+  Maximum:            0.3393 [0]
+  Quartile:           0.3393 
+  Median:             0.3393 
+  Quartile:           0.3393 
+
+
+* FILE: 
+  Records:           10
+  Out of range:       0
+  Invalid:            0
+  Column headers:     0
+  Blank:              0
+  Data Blocks:        1
+
+* COLUMN: 
+  Mean:            3033.4000
+  Std Dev:         1584.4200
+  Sample StdDev:   1670.1254
+  Skewness:           0.0000
+  Kurtosis:           1.7759
+  Avg Dev:         1379.0000
+  Sum:            30334.0000
+  Sum Sq.:       1.17119e+08
+
+  Mean Err.:        501.0376
+  Std Dev Err.:     354.2871
+  Skewness Err.:      0.7746
+  Kurtosis Err.:      1.5492
+
+  Minimum:          551.0000 [ 0]
+  Maximum:         5516.0000 [ 9]
+  Quartile:        1654.0000 
+  Median:          3033.5000 
+  Quartile:        4412.0000 
+
+
+* FILE: 
+  Records:           10
+  Out of range:       0
+  Invalid:            0
+  Column headers:     0
+  Blank:              0
+  Data Blocks:        1
+
+* COLUMN: 
+  Mean:             434.0214
+  Std Dev:            1.2712
+  Sample StdDev:      1.3399
+  Skewness:           0.9057
+  Kurtosis:           2.8686
+  Avg Dev:            1.0504
+  Sum:             4340.2135
+  Sum Sq.:       1.88376e+06
+
+  Mean Err.:          0.4020
+  Std Dev Err.:       0.2842
+  Skewness Err.:      0.7746
+  Kurtosis Err.:      1.5492
+
+  Minimum:          432.5906 [ 9]
+  Maximum:          436.8434 [ 0]
+  Quartile:         432.9693 
+  Median:           433.6659 
+  Quartile:         434.9339 
+
+Getting top scoring models at subsets of size: [551, 1103, 1654, 2206, 2758, 3309, 3861, 4412, 4964, 5516]
+Opening RMF file: /home/ignacia/Research/yeast_NPC/membrane_ring/mod_pom152_active_manual_v2//analys/A_models_clust0.rmf3 with 1872 frames
+  -- Opening frame 0 of 1872
+  -- Opening frame 100 of 1872
+  -- Opening frame 200 of 1872
+  -- Opening frame 300 of 1872
+  -- Opening frame 400 of 1872
+  -- Opening frame 500 of 1872
+  -- Opening frame 600 of 1872
+  -- Opening frame 700 of 1872
+  -- Opening frame 800 of 1872
+  -- Opening frame 900 of 1872
+  -- Opening frame 1000 of 1872
+  -- Opening frame 1100 of 1872
+  -- Opening frame 1200 of 1872
+  -- Opening frame 1300 of 1872
+  -- Opening frame 1400 of 1872
+  -- Opening frame 1500 of 1872
+  -- Opening frame 1600 of 1872
+  -- Opening frame 1700 of 1872
+  -- Opening frame 1800 of 1872
+Opening RMF file: /home/ignacia/Research/yeast_NPC/membrane_ring/mod_pom152_active_manual_v2//analys/B_models_clust0.rmf3 with 3644 frames
+  -- Opening frame 0 of 3644
+  -- Opening frame 100 of 3644
+  -- Opening frame 200 of 3644
+  -- Opening frame 300 of 3644
+  -- Opening frame 400 of 3644
+  -- Opening frame 500 of 3644
+  -- Opening frame 600 of 3644
+  -- Opening frame 700 of 3644
+  -- Opening frame 800 of 3644
+  -- Opening frame 900 of 3644
+  -- Opening frame 1000 of 3644
+  -- Opening frame 1100 of 3644
+  -- Opening frame 1200 of 3644
+  -- Opening frame 1300 of 3644
+  -- Opening frame 1400 of 3644
+  -- Opening frame 1500 of 3644
+  -- Opening frame 1600 of 3644
+  -- Opening frame 1700 of 3644
+  -- Opening frame 1800 of 3644
+  -- Opening frame 1900 of 3644
+  -- Opening frame 2000 of 3644
+  -- Opening frame 2100 of 3644
+  -- Opening frame 2200 of 3644
+  -- Opening frame 2300 of 3644
+  -- Opening frame 2400 of 3644
+  -- Opening frame 2500 of 3644
+  -- Opening frame 2600 of 3644
+  -- Opening frame 2700 of 3644
+  -- Opening frame 2800 of 3644
+  -- Opening frame 2900 of 3644
+  -- Opening frame 3000 of 3644
+  -- Opening frame 3100 of 3644
+  -- Opening frame 3200 of 3644
+  -- Opening frame 3300 of 3644
+  -- Opening frame 3400 of 3644
+  -- Opening frame 3500 of 3644
+  -- Opening frame 3600 of 3644
+Size of conformation matrix (5516, 7984, 3)
+Mode: cuda Superposition: True Number of cores: 4
+Size of RMSD matrix (flattened): (15210370,)
+Loading matrix data from Distances_Matrix.data.bin ...  Done
+Size of RMSD matrix (unpacked, N x N): (5516, 5516)
+Size of Sample A: 1872  ; Size of Sample B:  3644 ; Total 5516
+Calculating sampling precision
+Minimum and maximum pairwise model distances: 0.60919714 32.364693
+Clustering at thresholds: [ 3.60919714  6.60919714  9.60919714 12.60919714 15.60919714 18.60919714
+ 21.60919714 24.60919714 27.60919714 30.60919714]
+Clustering at threshold 18.609
+Contingency table: [[1872. 3246.]]
+gnuplot -e sysname="pom152" /home/ignacia/SOFTW/imp-sampcon-0320/pyext/src/../../utilities/gnuplot_scripts/Plot_Cluster_Population.plt
+gnuplot -e sysname="pom152" /home/ignacia/SOFTW/imp-sampcon-0320/pyext/src/../../utilities/gnuplot_scripts/Plot_Convergence_NM.plt
+gnuplot -e sysname="pom152" /home/ignacia/SOFTW/imp-sampcon-0320/pyext/src/../../utilities/gnuplot_scripts/Plot_Convergence_SD.plt
+gnuplot -e sysname="pom152" /home/ignacia/SOFTW/imp-sampcon-0320/pyext/src/../../utilities/gnuplot_scripts/Plot_Convergence_TS.plt

@@ -1,0 +1,130 @@
+\documentclass[8pt,a4paper]{article} 
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage[margin=0.2in]{geometry}
+\fontfamily{phv}\fontseries{mc}\selectfont
+\begin{document}
+
+\setcounter{table}{2}
+
+\begin{longtable}{ p{.48\textwidth} | p{.48\textwidth} } 
+\caption{Summary of the NPC spoke orphan structural elements integrative threading and the Pom152 ring integrative modeling}
+  
+  &  \\
+  \textbf{1) Gathering information} & \\
+    \hline
+
+            \textit{Prior models} & Structure of the isolated and $in\, situ$ NPCs\\
+                \textit{Physical principles and statistical preferences} & Excluded volume\\
+            & Sequence connectivity \\
+            & Predicted secondary structure (RaptorXProperties) \\
+            & Predicted transmembrane domains (http://yeastgenome.org and HeliQuest) \\
+                \textit{Experimental data} & 1425 DSS and EDC chemical crosslinks\\
+            & Cryo-EM map; EMDB TBD \\
+            & FIB-milled CET map; EMDB TBD \\
+            & $in\,  vitro$ protein-protein interactions \\
+          
+    &  \\
+    \normalsize{\textbf{2) Representing the system}} & \\
+    \hline
+    
+            \textit{Resolution of structured components} & 1 [R1] residue per bead\\
+                \textit{Resolution of unstructured components} & 10 [R10] residues per bead\\
+                \textit{Structural coverage} & 71 \%\\
+                    \textit{Number of structural elements (SEs)} & 30\\
+                \textit{Composition (number of copies of Pom152)} & 8\\
+                \textit{Atomic (structured) components (Pom152)} & 260-362, 379-472, 520-611, 616-714, 722-818, 824-918, 931-1026, 1036-1141, 1150-1229, 1244-1337\\
+                \textit{Unstructured components (Pom152)} & 1-259, 361-378, 471-519, 610-615, 713-721, 819-823, 919-930, 1027-1035, 1142-1149, 1230-1243\\
+                \textit{Spatial restraints encoded into scoring function (Pom152)} & Excluded volume; applied to the R1 representation\\
+            & Sequence connectivity; applied to the R1 representation \\
+            & Cross-link restraints; applied to the R1 representation \\
+            & EM density restraint using Gaussian Mixture Model (GMMs) representations \\
+            & Transmembrane domain restraint (Pom152 (111-200)) \\
+            & Peri-nuclear restraint (Pom152 (201-1337)) \\
+            & Sequence connectivity and excluded volume \\
+                \textit{Spatial restraints encoded into threading scoring function} & Secondary structure restraint; applied to the SEs\\
+            & Loop end-to-end disntance restraint; applied to the SEs \\
+            & Cross-link restraints; applied to the SEs and R1 representation \\
+        
+
+  &  \\
+    \normalsize{\textbf{3.1) Enumeration of threading of degrees of freedom}} & \\
+    \hline
+            \textit{Sequences used for threading} & Nic96 (residues 1-205), Nup53 (residues 1-247), Nup59 (residues 1-265), Nup100 (residues 551-815), Nup116 (residues 751-965), and Nup145N (residues 201-458)\\
+          
+   &  \\
+    \normalsize{\textbf{3.2) Structural Sampling}} & \\
+    \hline
+            \textit{Sampling method} & Replica Exchange Gibbs sampling, based on Metropolis Monte Carlo\\
+                \textit{Replica exchange temperature range} & 1.0 - 2.5\\
+                \textit{Number of replicas} & 8\\
+                \textit{Number of runs} & 50\\
+                \textit{Number of structures generated} & 300000\\
+                \textit{Movers for flexible string of bead} & Random translation up to 4.0 \AA\\
+                \textit{CPU time} & 14 hours on 42 processors\\
+        
+   &  \\
+  
+\normalsize{\textbf{4.1) Validating the threading models}} & \\
+    \hline
+          \textit{Protein, sequence range, and start residue standard deviation} & SE1: Nic96, 15-30 (1)\\
+            & SE2: Nic96, 38-43 (2) \\
+            & SE3: Nic96, 46-61 (0.3) \\
+            & SE4: Nic96, 66-78 (2) \\
+            & SE5: Nic96, 84-99 (1) \\
+            & SE6: Nic96, 118-141 and 147-166 (1.4) \\
+            & SE7: Nic96, 118-153 and 155-165 (0) \\
+            & SE8: undefined \\
+        
+ &  \\
+
+  \normalsize{\textbf{4.2) Validating the Pom152 ring models}} & \\
+    \hline
+   \textbf{Models selected for validation} & \\
+    \hline
+          \textit{Number of models after equilibration (isolated/in situ)} & 300000/300000\\
+                \textit{Number of models that satisfy the input information (isolated/in situ)} & 92281/51183\\
+                \textit{Number of structures in samples A,B (isolated/in situ)} & 52831,39450/18722,32461\\
+                \textit{p-value of non-parametric Kolmogorov-Smirnov two-sample test (isolated/in situ)} & 0.446/0.34\\
+                \textit{Kolmogorov-Smirnov two-sample test statistic (D) (isolated/in situ)} & 0.0,1E-16\\
+           \hline
+    
+    \textbf{Thoroughness of the structural sampling} & \\
+    \hline
+          \textit{Sampling precision (isolated/in situ)} & 14.66/12.6 \AA\\
+                \textit{Homogeneity of proportions $\chi^2$ test p-value (Cramer’s V value) (isolated/in situ)} & 1.000 (0.000)/ 1.000 (0.000) (thresholds: p-value$>$0.05 OR Cramer's V$<$0.1)\\
+                \textit{Number of clusters (isolated/in situ)} & 1/1\\
+                \textit{Cluster populations (isolated/in situ)} & Cluster 1: 99/98 \%\\
+                \textit{Cluster precisions (isolated/in situ)} & Cluster 1: 15.42/10.1 \AA\\
+                \textit{Average cross-correlation between localization probability densities of samples A and B (isolated/in situ)} & Cluster 1: 0.84/0.92\\
+           \hline
+  
+  \textbf{Validation by information used for modeling} & \\
+  \hline
+          \textit{Percent of sequence connectivity restraints satisfied per structure (isolated/in situ)} & 99/99 \%\\
+                \textit{Percent cross-link restraints satisfied by ensemble (isolated/in situ)} & 89/89 \%\\
+                \textit{Percent of transmembrane domain restraints satisfied by ensemble (isolated/in situ})} & 98/99 \%\\
+                \textit{Percent of excluded volume restraints satisfied per structure (isolated/in situ)} & 99/99 \%\\
+          &  \\
+  
+   &  \\
+  \normalsize{\textbf{6) Software and data availability}} & \\
+    \hline
+   \textbf{Software} & \\
+   \hline
+             \textit{Modeling programs} & IMP PMI module, version develop-548de65454\\
+             & Integrative Modeling Platform (IMP), version develop-548de65454 \\
+                  \textit{Modeling scripts} & https://github.com/integrativemodeling/NPC\_v3.0\\
+                  \textit{Homology detection and structure prediction} & HHPred, version 2.0.16\\
+                  \textit{Visualization and plotting} & UCSF Chimera\\
+             & Matplotlib, version 3.0.3  \\
+          \hline
+
+  \textbf{Data} & \\
+    \hline
+            \textit{PDB-dev accesion code} & TBD\\
+          \hline
+  
+\end{longtable}
+\end{document}

@@ -1,0 +1,142 @@
+data_model
+_entry.id model
+_struct.entry_id model
+_struct.title 'Integrative structure determination of the NPC'
+_audit_conform.dict_location https://raw.githubusercontent.com/ihmwg/IHM-dictionary/b4fe8af/ihm-extension.dic
+_audit_conform.dict_name ihm-extension.dic
+_audit_conform.dict_version 1.09
+#
+loop_
+_software.pdbx_ordinal
+_software.name
+_software.classification
+_software.description
+_software.version
+_software.type
+_software.location
+1 'IMP PMI module' 'integrative model building' 'integrative model building'
+develop-548de65454 program https://integrativemodeling.org
+2 'Integrative Modeling Platform (IMP)' 'integrative model building'
+'integrative model building' develop-548de65454 program
+https://integrativemodeling.org
+#
+#
+loop_
+_ihm_struct_assembly.id
+_ihm_struct_assembly.name
+_ihm_struct_assembly.description
+1 'Complete assembly'
+'All known components & All components modeled by IMP in state State_0'
+#
+#
+loop_
+_ihm_external_reference_info.reference_id
+_ihm_external_reference_info.reference_provider
+_ihm_external_reference_info.reference_type
+_ihm_external_reference_info.reference
+_ihm_external_reference_info.refers_to
+_ihm_external_reference_info.associated_url
+_ihm_external_reference_info.details
+1 . 'Supplementary Files' . Other . .
+#
+#
+loop_
+_ihm_external_files.id
+_ihm_external_files.reference_id
+_ihm_external_files.file_path
+_ihm_external_files.content_type
+_ihm_external_files.file_size_bytes
+_ihm_external_files.details
+1 1 mod_manual_representation.py 'Modeling workflow or script' 21102
+'The main integrative modeling script'
+#
+#
+loop_
+_ihm_model_representation.id
+_ihm_model_representation.name
+_ihm_model_representation.details
+1 'Default representation' .
+#
+#
+loop_
+_ihm_modeling_protocol.id
+_ihm_modeling_protocol.protocol_name
+_ihm_modeling_protocol.num_steps
+1 . 2
+#
+#
+loop_
+_ihm_modeling_protocol_details.id
+_ihm_modeling_protocol_details.protocol_id
+_ihm_modeling_protocol_details.step_id
+_ihm_modeling_protocol_details.struct_assembly_id
+_ihm_modeling_protocol_details.dataset_group_id
+_ihm_modeling_protocol_details.struct_assembly_description
+_ihm_modeling_protocol_details.step_name
+_ihm_modeling_protocol_details.step_method
+_ihm_modeling_protocol_details.num_models_begin
+_ihm_modeling_protocol_details.num_models_end
+_ihm_modeling_protocol_details.multi_scale_flag
+_ihm_modeling_protocol_details.multi_state_flag
+_ihm_modeling_protocol_details.ordered_flag
+_ihm_modeling_protocol_details.software_id
+_ihm_modeling_protocol_details.script_file_id
+_ihm_modeling_protocol_details.description
+1 1 1 1 .
+'All known components & All components modeled by IMP in state State_0' Sampling
+'Replica exchange monte carlo' 0 5 YES NO NO 1 . .
+2 1 2 1 .
+'All known components & All components modeled by IMP in state State_0' Sampling
+'Replica exchange monte carlo' 5 2007800 YES NO NO 1 . .
+#
+#
+loop_
+_ihm_modeling_post_process.id
+_ihm_modeling_post_process.protocol_id
+_ihm_modeling_post_process.analysis_id
+_ihm_modeling_post_process.step_id
+_ihm_modeling_post_process.type
+_ihm_modeling_post_process.feature
+_ihm_modeling_post_process.num_models_begin
+_ihm_modeling_post_process.num_models_end
+_ihm_modeling_post_process.struct_assembly_id
+_ihm_modeling_post_process.dataset_group_id
+_ihm_modeling_post_process.software_id
+_ihm_modeling_post_process.script_file_id
+_ihm_modeling_post_process.details
+1 1 1 1 cluster RMSD 200000 9999 . . . . .
+#
+#
+loop_
+_ihm_model_group.id
+_ihm_model_group.name
+_ihm_model_group.details
+1 'Cluster 0 in state State_0' .
+#
+#
+loop_
+_ihm_ensemble_info.ensemble_id
+_ihm_ensemble_info.ensemble_name
+_ihm_ensemble_info.post_process_id
+_ihm_ensemble_info.model_group_id
+_ihm_ensemble_info.ensemble_clustering_method
+_ihm_ensemble_info.ensemble_clustering_feature
+_ihm_ensemble_info.num_ensemble_models
+_ihm_ensemble_info.num_ensemble_models_deposited
+_ihm_ensemble_info.ensemble_precision_value
+_ihm_ensemble_info.ensemble_file_id
+_ihm_ensemble_info.details
+_ihm_ensemble_info.sub_sample_flag
+_ihm_ensemble_info.sub_sampling_type
+1 'Cluster 0 in state State_0' 1 1 . dRMSD 9999 1 8.300 . . NO .
+#
+#
+loop_
+_imp_replica_exchange_protocol.protocol_id
+_imp_replica_exchange_protocol.step_id
+_imp_replica_exchange_protocol.monte_carlo_temperature
+_imp_replica_exchange_protocol.replica_exchange_minimum_temperature
+_imp_replica_exchange_protocol.replica_exchange_maximum_temperature
+1 1 1.000 1.000 4.000
+1 2 1.000 1.000 3.000
+#
