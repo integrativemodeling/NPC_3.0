@@ -12,7 +12,6 @@ import IMP.pmi.restraints.stereochemistry
 import IMP.pmi.restraints.crosslinking
 import IMP.pmi.restraints.em 
 import IMP.pmi.restraints.basic
-import IMP.pmi.restraints.occams
 import IMP.pmi.io.crosslink
 import IMP.pmi.restraints.npc_restraints
 import IMP.bayesianem
@@ -46,6 +45,17 @@ w_ig_distance  = 10.0
 # Create System and State
 mdl = IMP.Model()
 s = IMP.pmi.topology.System(mdl)
+
+##############################
+# Generate mmcif file
+##############################
+    
+if '--mmcif' in sys.argv:
+    # Record the modeling protocol to an mmCIF file
+    po = IMP.pmi.mmcif.ProtocolOutput()
+    po.system.title = ('Integrative structure determination of Pom152 rings of isolated NPCs')
+    s.add_protocol_output(po)
+
 st = s.create_state()
 
 # Read sequences and create Molecules
@@ -87,16 +97,6 @@ for m in mols:
 print([ss.get_molecules() for ss in s.get_states()])
     
 
-
-##############################
-# Generate mmcif file
-##############################
-    
-if '--mmcif' in sys.argv:
-    # Record the modeling protocol to an mmCIF file
-    po = IMP.pmi.mmcif.ProtocolOutput(open('Pom152_ring_isolated.cif', 'w'))
-    po.system.title = ('Integrative structure determination of Pom152 rings of isolated NPCs')
-    s.add_protocol_output(po)
 
 # Create a symmetry constraint
 #  A constrant is invariant: IMP will automatically move all clones to match the reference
@@ -495,6 +495,6 @@ if '--mmcif' in sys.argv:
     po.system.update_locations_in_repositories(repos)
     
 
-    po.flush()
-
-
+    po.finalize()
+    with open('Pom152_ring_isolated.cif', 'w') as fh:
+        ihm.dumper.write(fh, [po.system])
