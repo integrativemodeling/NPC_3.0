@@ -335,7 +335,6 @@ if include_XLs:
 ############################
 mc2 = IMP.pmi.macros.ReplicaExchange0(mdl,
                                       root_hier=hier,                       
-                                      crosslink_restraints=rmf_restraints,       
                                       monte_carlo_sample_objects=dof.get_movers(),  
                                       global_output_directory="output/",
                                       output_objects=output_objects,
