@@ -13,7 +13,7 @@ import IMP.pmi.restraints.crosslinking
 import IMP.pmi.restraints.em 
 import IMP.pmi.restraints.basic
 import IMP.pmi.io.crosslink
-import IMP.pmi.restraints.npc_restraints
+import IMP.pmi.restraints.npc
 import IMP.bayesianem
 import IMP.bayesianem.restraint
 import math
@@ -272,7 +272,7 @@ if include_Memb_binding:
     membrane_surface_sel = [(111,194,'Pom152',0)]
 
     for sel in membrane_surface_sel:
-        msl = IMP.pmi.restraints.npc_restraints.MembraneSurfaceLocationRestraint(hier=hier,
+        msl = IMP.pmi.restraints.npc.MembraneSurfaceLocationRestraint(hier=hier,
                                                                                    protein=sel,
                                                                                    tor_R=tor_R,
                                                                                    tor_r=tor_r_ALPS,
