@@ -169,8 +169,8 @@ if include_EM == True:
                                                               top_dir+'data/em_data/r_87_focus_sym-pomring-align-lp20_centered_cut_translated_dsfact2_ng80.txt',
                                                               scale_target_to_mass=True)
     gem.set_label("EM")
-    gem.add_to_model()
     gem.set_weight(1.0)
+    gem.add_to_model()
     output_objects.append(gem)
 
     #gem.center_model_on_target_density(st)
@@ -247,8 +247,8 @@ if include_Memb_binding:
                                                                                    sigma=msl_sigma,
                                                                                    resolution = 1)
         msl.set_weight(w_msl)
-        msl.add_to_model()
         msl.set_label('%s.%s'%(sel[2],sel[0]))
+        msl.add_to_model()
         output_objects.append(msl)
         print('Membrane binding restraint:', msl.evaluate())
 
@@ -289,16 +289,16 @@ print(mols_sim, mols_sym)
 
 # Create excluded volume for all particles
 evr1 = IMP.pmi.restraints.stereochemistry.ExcludedVolumeSphere(included_objects=mols_sim)
-evr1.add_to_model()
 evr1.set_weight(1.0)
 evr1.set_label('intra')
+evr1.add_to_model()
 output_objects.append(evr1)
 
 evr2 = IMP.pmi.restraints.stereochemistry.ExcludedVolumeSphere(included_objects=mols_sim,
                                                                other_objects=mols_sym)
-evr2.add_to_model()
 evr2.set_weight(1.0)
 evr2.set_label('inter')
+evr2.add_to_model()
 output_objects.append(evr2)
 
 print('Excluded volume:', evr1.evaluate(), evr2.evaluate())
