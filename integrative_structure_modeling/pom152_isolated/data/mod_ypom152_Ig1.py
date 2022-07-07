@@ -1,5 +1,6 @@
 from modeller import *
 from modeller.automodel import *
+import sys
 
 # Override the 'special_restraints' and 'user_after_single_model' methods:
 
@@ -19,6 +20,8 @@ a = MyModel(env, alnfile='aln_ig1_hhpred.pir', knowns=('5tvz'),sequence='ypom152
 
 a.starting_model = 1
 a.ending_model = 50
+if '--test' in sys.argv: a.ending_model = 1
+
 a.make()                           # do comparative modeling
 
 print()
